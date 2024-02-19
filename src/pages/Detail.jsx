@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import BaseButton from "../style/common/BaseButton";
 import * as S from "../style/DetailStyle";
 import { useSelector, useDispatch } from "react-redux";
