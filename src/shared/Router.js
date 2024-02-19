@@ -23,8 +23,8 @@ const Router = () => {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="detail/:id" element={<Detail />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="login" element={<Login />} />
+        <Route path="profile" element={<Profile />} />
         <Route path="*" element={<Navigate replace to="/" />} />
       </Routes>
     </BrowserRouter>

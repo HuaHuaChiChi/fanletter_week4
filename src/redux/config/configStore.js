@@ -1,10 +1,10 @@
-import { createStore } from "redux";
-import { combineReducers } from "redux";
-import jsonSet from "../modules/jsonSet";
+import jsonSetReducer from "../modules/jsonSet";
+import { configureStore } from "@reduxjs/toolkit";
 
-const rootReducer = combineReducers({
-  jsonSet: jsonSet,
+const store = configureStore({
+  reducer: {
+    jsonSet: jsonSetReducer,
+  },
 });
-const store = createStore(rootReducer);
 
 export default store;
