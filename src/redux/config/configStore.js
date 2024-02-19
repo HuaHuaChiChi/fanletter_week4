@@ -1,10 +1,14 @@
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import jsonSetReducer from "../modules/jsonSet";
-import { configureStore } from "@reduxjs/toolkit";
+import userSlice from "../modules/userSlice";
+
+const rootReducer = combineReducers({
+  jsonSet: jsonSetReducer,
+  user: userSlice,
+});
 
 const store = configureStore({
-  reducer: {
-    jsonSet: jsonSetReducer,
-  },
+  reducer: rootReducer,
 });
 
 export default store;

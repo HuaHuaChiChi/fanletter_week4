@@ -1,10 +1,13 @@
 import { useState } from "react";
 import styled from "styled-components";
 import Button from "../components/common/Button";
-import { login, register } from "../apis/login";
 import api from "../apis/api";
+import { useDispatch } from "react-redux";
+import { login } from "../redux/modules/userSlice";
 
 const Login = () => {
+  const dispatch = useDispatch();
+
   const [inLogin, setInLogin] = useState(true);
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
@@ -25,20 +28,18 @@ const Login = () => {
   const accessToLogin = () => {
     try {
       api.post("/login", { id, password }).then((response) => {
-        console.log(response);
+        dispatch(login(response.data));
       });
     } catch (error) {
       console.error(error);
     }
   };
 
-  const accessToRegister = async () => {
+  const accessToRegister = () => {
     try {
-      await api
-        .post("/register", { id, password, nickname })
-        .then((response) => {
-          console.log(response);
-        });
+      api.post("/register", { id, password, nickname }).then((response) => {
+        console.log(response.data);
+      });
     } catch (error) {
       console.error(error);
     }
