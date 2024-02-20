@@ -10,12 +10,15 @@ import {
 import BaseButton from "../style/common/BaseButton";
 import defaultImg from "../style/common/defaultImg.png";
 import { addData } from "../redux/modules/jsonSet";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 function LetterForm() {
   const dispatch = useDispatch();
+  const { avatar, isLogin, nickname, userId } = useSelector(
+    (state) => state.user
+  );
+  console.log(nickname);
 
-  const [nickname, setNickname] = useState("");
   const [content, setContent] = useState("");
   const [selectMember, setSelectMember] = useState("카리나");
 
@@ -28,6 +31,7 @@ function LetterForm() {
       content,
       writedTo: selectMember,
       id: uuidv4(),
+      userId,
     };
     dispatch(addData(newLetter));
   };
@@ -36,12 +40,7 @@ function LetterForm() {
     <FormContainer onSubmit={addNewLetter}>
       <InputSection>
         <Labels>닉네임:&nbsp;</Labels>
-        <NicknameInput
-          value={nickname}
-          placeholder="최대 20글자까지 작성할 수 있습니다."
-          maxLength={20}
-          onChange={(e) => setNickname(e.target.value)}
-        />
+        <Labels>{nickname}</Labels>
       </InputSection>
       <InputSection>
         <Labels>내용:&nbsp;</Labels>

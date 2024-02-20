@@ -4,6 +4,7 @@ import Button from "../components/common/Button";
 import api from "../apis/api";
 import { useDispatch } from "react-redux";
 import { login } from "../redux/modules/userSlice";
+import { registerApi, loginApi } from "../apis/login";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -37,9 +38,7 @@ const Login = () => {
 
   const accessToRegister = () => {
     try {
-      api.post("/register", { id, password, nickname }).then((response) => {
-        console.log(response.data);
-      });
+      registerApi(id, password, nickname);
     } catch (error) {
       console.error(error);
     }
