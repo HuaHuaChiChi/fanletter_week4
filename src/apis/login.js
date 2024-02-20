@@ -13,14 +13,14 @@ import api from "./api";
 
 export const registerApi = async (id, password, nickname) => {
   try {
-    await axios
-      .post("https://moneyfulpublicpolicy.co.kr/register", {
+    await api
+      .post("/register", {
         id,
         password,
         nickname,
       })
       .then((response) => {
-        console.log(response);
+        console.log(response.data);
       });
   } catch (error) {
     console.error(error);

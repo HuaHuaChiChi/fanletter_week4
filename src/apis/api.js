@@ -5,3 +5,7 @@ const api = axios.create({
 });
 
 export default api;
+
+export const dbApi = axios.create({
+  baseURL: `${process.env.REACT_APP_DB_API_URL}`,
+});

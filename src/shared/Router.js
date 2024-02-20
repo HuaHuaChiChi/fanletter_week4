@@ -7,18 +7,24 @@ import { setData } from "../redux/modules/jsonSet";
 import Login from "../pages/Login";
 import Profile from "../pages/Profile";
 import Nav from "../components/common/Nav";
+import { dbApi } from "../apis/api";
 
 const Router = () => {
   const dispatch = useDispatch();
   const isLogin = useSelector((state) => state.user.isLogin);
   console.log(isLogin);
 
+  // useEffect(() => {
+  //   fetch("http://localhost:3001/memo")
+  //     .then((response) => response.json())
+  //     .then((json) => {
+  //       dispatch(setData(json));
+  //     });
+  // }, []);
+
   useEffect(() => {
-    fetch("http://localhost:3001/memo")
-      .then((response) => response.json())
-      .then((json) => {
-        dispatch(setData(json));
-      });
+    dbApi.get().then((response) => dispatch(setData(response.data)));
+    console.log(process.env);
   }, []);
 
   return (
