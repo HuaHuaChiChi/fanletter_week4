@@ -9,7 +9,7 @@ import {
 } from "../style/LetterFromStyle";
 import BaseButton from "../style/common/BaseButton";
 import defaultImg from "../style/common/defaultImg.png";
-import { addData } from "../redux/modules/jsonSet";
+import { __addLetter } from "../redux/modules/jsonSet";
 import { useDispatch, useSelector } from "react-redux";
 
 function LetterForm() {
@@ -33,7 +33,7 @@ function LetterForm() {
       id: uuidv4(),
       userId,
     };
-    dispatch(addData(newLetter));
+    dispatch(__addLetter(newLetter));
   };
 
   return (

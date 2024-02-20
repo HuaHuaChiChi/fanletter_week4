@@ -3,8 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import BaseButton from "../style/common/BaseButton";
 import * as S from "../style/DetailStyle";
 import { useSelector, useDispatch } from "react-redux";
-import { deleteData } from "../redux/modules/jsonSet";
-import { updateData } from "../redux/modules/jsonSet";
+import { __deleteLetter, __updateLetter } from "../redux/modules/jsonSet";
 
 function Detail() {
   //redux에서 데이터를 가져오는 부분
@@ -21,19 +20,12 @@ function Detail() {
   const [detailLetter] = data.filter((item) => item.id === id);
 
   const handleDelete = () => {
-    const deletedLetter = data.filter((item) => item.id !== id);
-    dispatch(deleteData(deletedLetter));
+    dispatch(__deleteLetter(id));
     navigate("/");
   };
 
   const handleUpdateText = () => {
-    const updatedData = data.map((item) => {
-      if (item.id === id) {
-        return { ...item, content: updateText };
-      }
-      return item;
-    });
-    dispatch(updateData(updatedData));
+    dispatch(__updateLetter({ id, updateText }));
     navigate("/");
   };
 
