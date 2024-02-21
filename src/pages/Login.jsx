@@ -26,6 +26,7 @@ const Login = () => {
     setNickname(e.target.value);
   };
 
+  // /login?expiresIn=10m 토큰 발급 기한 조정
   const accessToLogin = () => {
     try {
       api.post("/login", { id, password }).then((response) => {

@@ -1,10 +1,10 @@
 import Letter from "./Letter";
-import * as S from "../style/LetterListStyle"
+import * as S from "../style/LetterListStyle";
 import { useSelector } from "react-redux";
 
 function LetterList() {
-  const select = useSelector((state) => state.jsonSet.selectMember)
-  const data = useSelector((state) => state.jsonSet.data)
+  const select = useSelector((state) => state.jsonSet.selectMember);
+  const data = useSelector((state) => state.jsonSet.data);
   const filtered = data.filter((letter) => letter.writedTo === select);
 
   return (

@@ -8,6 +8,7 @@ import { __deleteLetter, __updateLetter } from "../redux/modules/jsonSet";
 function Detail() {
   //redux에서 데이터를 가져오는 부분
   const data = useSelector((state) => state.jsonSet.data);
+  console.log(data);
   const dispatch = useDispatch();
 
   //수정 전, 후 상태를 나누기 위한 부분
@@ -17,6 +18,7 @@ function Detail() {
   //detail page에서 선택한 letter의 정보를 받아오기 위한 부분
   const navigate = useNavigate();
   const { id } = useParams();
+
   const [detailLetter] = data.filter((item) => item.id === id);
 
   const handleDelete = () => {
@@ -29,6 +31,7 @@ function Detail() {
     navigate("/");
   };
 
+  if (!detailLetter) return null;
   return (
     <S.Container>
       <S.BackButton onClick={() => navigate("/")}>뒤로가기</S.BackButton>
