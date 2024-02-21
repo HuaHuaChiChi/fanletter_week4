@@ -4,7 +4,7 @@ import Button from "../components/common/Button";
 import api from "../apis/api";
 import { useDispatch } from "react-redux";
 import { login } from "../redux/modules/userSlice";
-import { registerApi, loginApi } from "../apis/login";
+import { registerApi } from "../apis/login";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -29,7 +29,7 @@ const Login = () => {
   // /login?expiresIn=10m 토큰 발급 기한 조정
   const accessToLogin = () => {
     try {
-      api.post("/login", { id, password }).then((response) => {
+      api.post("/login?expiresIn=10m", { id, password }).then((response) => {
         dispatch(login(response.data));
       });
     } catch (error) {

@@ -8,6 +8,7 @@ import { __deleteLetter, __updateLetter } from "../redux/modules/jsonSet";
 function Detail() {
   //redux에서 데이터를 가져오는 부분
   const data = useSelector((state) => state.jsonSet.data);
+  const { isLoading } = useSelector((state) => state.jsonSet);
   console.log(data);
   const dispatch = useDispatch();
 
@@ -31,7 +32,7 @@ function Detail() {
     navigate("/");
   };
 
-  if (!detailLetter) return null;
+  if (!detailLetter && !isLoading) return null;
   return (
     <S.Container>
       <S.BackButton onClick={() => navigate("/")}>뒤로가기</S.BackButton>
